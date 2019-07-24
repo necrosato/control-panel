@@ -7,21 +7,14 @@
 //
 
 #include "include/button.h"
+#include "include/serial_commands.h"
 
-const int button1_pin = 8;
+Button button1(&new_fullscreen_terminal, 8, HIGH);
 
 void setup() {
   Serial.begin(9600);
   pinMode(button1_pin, INPUT);
 }
-
-int button_state = LOW;
-
-void new_fullscreen_terminal() {
-  Serial.println("gnome-terminal --full-screen &");
-}
-
-Button button1(&new_fullscreen_terminal, button1_pin, HIGH);
 
 void loop() {
   button1.TriggerIfToggled();
