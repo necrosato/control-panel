@@ -7,8 +7,8 @@
 //
 
 #include "include/button.h"
-#include "include/serial_commands.h"
 #include "include/switch.h"
+#include "serial_commands.h"
 
 Button button1(&new_fullscreen_terminal, 8, HIGH);
 Switch switch1(&lock_session, &unlock_session, 7);

@@ -21,6 +21,7 @@ void lock_session() {
 
 void unlock_session() {
   Serial.println("loginctl unlock-session");
+  Serial.println("xset dpms force on");
 }
 
 #endif  // _HOME_NSATO_ARDUINO_SKETCHES_MICRO_CONTROL_PANEL_LINUX_MICRO_CONTROL_PANEL_INCLUDE_SERIAL_COMMANDS_H_
