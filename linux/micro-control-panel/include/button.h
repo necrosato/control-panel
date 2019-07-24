@@ -9,10 +9,12 @@
 #ifndef _HOME_NSATO_ARDUINO_SKETCHES_MICRO_CONTROL_PANEL_LINUX_MICRO_CONTROL_PANEL_INCLUDE_BUTTON_H_
 #define _HOME_NSATO_ARDUINO_SKETCHES_MICRO_CONTROL_PANEL_LINUX_MICRO_CONTROL_PANEL_INCLUDE_BUTTON_H_
 
+#include "../include/toggleable.h"
+
 /**
  * A button associated with an action method
  */
-class Button {
+class Button : public Toggleable {
  public:
   virtual ~Button() = default;
   Button() = delete;
@@ -26,14 +28,8 @@ class Button {
   bool TriggerIfToggled();
 
  private:
-  int PinState();
-
-  bool IsToggled();
-
   void(*action_)();
-  int pin_;
   int trigger_state_;
-  int button_state_;
 };
 
 #endif  // _HOME_NSATO_ARDUINO_SKETCHES_MICRO_CONTROL_PANEL_LINUX_MICRO_CONTROL_PANEL_INCLUDE_BUTTON_H_

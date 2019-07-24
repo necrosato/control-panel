@@ -10,27 +10,13 @@
 #include "../include/button.h"
 
 Button::Button(void (*action)(), int pin, int trigger_state) :
-    action_(action), pin_(pin), trigger_state_(trigger_state), button_state_(!trigger_state) {
-  pinMode(pin, INPUT);
-}
+    Toggleable(pin), action_(action), trigger_state_(trigger_state) {}
 
 bool Button::TriggerIfToggled() {
-  if (IsToggled() && button_state_ == trigger_state_) {
+  if (IsToggled() && current_state_ == trigger_state_) {
     action_();
     return true;
   }
   return false;
 }
 
-int Button::PinState() {
-  return digitalRead(pin_);
-}
-
-bool Button::IsToggled() {
-  int state_tmp = PinState();
-  if (button_state_ != state_tmp) {
-    button_state_ = state_tmp;
-    return true;
-  }
-  return false;
-}

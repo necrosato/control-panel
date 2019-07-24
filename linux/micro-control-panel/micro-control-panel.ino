@@ -8,8 +8,10 @@
 
 #include "include/button.h"
 #include "include/serial_commands.h"
+#include "include/switch.h"
 
 Button button1(&new_fullscreen_terminal, 8, HIGH);
+Switch switch1(&lock_session, &unlock_session, 7);
 
 void setup() {
   Serial.begin(9600);
@@ -17,5 +19,6 @@ void setup() {
 
 void loop() {
   button1.TriggerIfToggled();
+  switch1.TriggerIfToggled();
   delay(100);
 }

@@ -12,7 +12,15 @@
 #include "Print.h"
 
 void new_fullscreen_terminal() {
-  Serial.println("gnome-terminal --full-screen &");
+  Serial.println("gnome-terminal --full-screen");
+}
+
+void lock_session() {
+  Serial.println("loginctl lock-session");
+}
+
+void unlock_session() {
+  Serial.println("loginctl unlock-session");
 }
 
 #endif  // _HOME_NSATO_ARDUINO_SKETCHES_MICRO_CONTROL_PANEL_LINUX_MICRO_CONTROL_PANEL_INCLUDE_SERIAL_COMMANDS_H_
