@@ -6,6 +6,8 @@
 // Copyright © 2018 Naookie Sato. All rights reserved.
 //
 
+#include "include/button.h"
+
 const int button1_pin = 8;
 
 void setup() {
@@ -19,13 +21,9 @@ void new_fullscreen_terminal() {
   Serial.println("gnome-terminal --full-screen &");
 }
 
+Button button1(&new_fullscreen_terminal, button1_pin, HIGH);
+
 void loop() {
-  int button_state_tmp = digitalRead(button1_pin);
-  if (button_state != button_state_tmp) {
-    button_state = button_state_tmp;
-    if (button_state == HIGH) {
-      new_fullscreen_terminal();
-    }
-  }
+  button1.TriggerIfToggled();
   delay(100);
 }
