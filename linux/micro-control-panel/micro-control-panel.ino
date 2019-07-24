@@ -13,7 +13,6 @@ Button button1(&new_fullscreen_terminal, 8, HIGH);
 
 void setup() {
   Serial.begin(9600);
-  pinMode(button1_pin, INPUT);
 }
 
 void loop() {

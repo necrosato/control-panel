@@ -18,8 +18,7 @@ class Button {
   Button() = delete;
   Button(const Button& other) = delete;
   Button& operator=(const Button& other) = delete;
-  Button(void (*action)(), int pin, int trigger_state) :
-    action_(action), pin_(pin), trigger_state_(trigger_state), button_state_(!trigger_state) {}
+  Button(void (*action)(), int pin, int trigger_state);
 
   /**
    * If the button's state has changed since the last invocation, perform the action.
