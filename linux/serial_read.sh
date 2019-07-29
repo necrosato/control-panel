@@ -28,7 +28,7 @@ if [[ "$SERIAL_DEVICE" == "" ]]; then
 fi
 
 echo "Setting up serial terminal for device: $SERIAL_DEVICE"
-stty -F $SERIAL_DEVICE $BAUD -icanon min 0
+stty -F $SERIAL_DEVICE $BAUD -icanon min 0 -icrnl -ixon -opost -isig -iexten -echo -echoe -echok -echoctl -echoke
 
 echo "Reading from serial device: $SERIAL_DEVICE"
 while read -r line; do
