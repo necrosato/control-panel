@@ -28,4 +28,8 @@ void minimize_all_windows() {
   Serial.println("eval for w in $(xdotool search --name \".*\"); do xdotool windowminimize \"$w\"; done");
 }
 
+void activate_all_windows() {
+  Serial.println("eval for w in $(xdotool search --name \".*\"); do xdotool windowactivate \"$w\"; done");
+}
+
 #endif  // _HOME_NSATO_ARDUINO_SKETCHES_MICRO_CONTROL_PANEL_LINUX_MICRO_CONTROL_PANEL_INCLUDE_SERIAL_COMMANDS_H_

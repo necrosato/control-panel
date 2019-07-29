@@ -35,5 +35,5 @@ while read -r line; do
   # Remove trailing whitespace
   line="$(echo -e "$line" | sed -e 's/[[:space:]]$//')"
   echo "$(TZ="America/Los_Angeles" date) - $line"
-  $line
+  $line > /tmp/serial_read.log 2>&1
 done < <(tail -f $SERIAL_DEVICE)
