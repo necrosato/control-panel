@@ -24,4 +24,8 @@ void unlock_session() {
   Serial.println("xset dpms force on");
 }
 
+void minimize_all_windows() {
+  Serial.println("eval for w in $(xdotool search --name \".*\"); do xdotool windowminimize \"$w\"; done");
+}
+
 #endif  // _HOME_NSATO_ARDUINO_SKETCHES_MICRO_CONTROL_PANEL_LINUX_MICRO_CONTROL_PANEL_INCLUDE_SERIAL_COMMANDS_H_
