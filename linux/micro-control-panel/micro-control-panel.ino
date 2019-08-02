@@ -6,8 +6,8 @@
 // Copyright © 2018 Naookie Sato. All rights reserved.
 //
 
-#include "include/button.h"
-#include "include/switch.h"
+#include <button.h>
+#include <switch.h>
 #include "serial_commands.h"
 
 Switch switch1(&lock_session, &unlock_session, 7);

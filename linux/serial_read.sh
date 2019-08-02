@@ -2,13 +2,14 @@
 
 SERIAL_DEVICE=$(find /dev/ -iname "ttyACM*")
 BAUD=9600
-while getopts "hb:d:" opt; do
+while getopts "hb:d:m" opt; do
   case $opt in
     h )
       echo "Read and execute commands comming from a serial device."
       echo "-h : Display this help message."
       echo "-b : Baud rate, defaults to 9600."
       echo "-d : Serial device to read from, searches for serial device if not given."
+      echo "-m : Monitor only, do not execute commands."
       exit 0
       ;;
     b )
@@ -17,6 +18,8 @@ while getopts "hb:d:" opt; do
     d )
       SERIAL_DEVICE=$OPTARG
       ;;
+    m )
+      MONITOR="yes"
   esac
 done
 
@@ -35,5 +38,7 @@ while read -r line; do
   # Remove trailing whitespace
   line="$(echo -e "$line" | sed -e 's/[[:space:]]$//')"
   echo "$(TZ="America/Los_Angeles" date) - $line"
-  $line > /tmp/serial_read.log 2>&1
+  if [[ "$MONITOR" == "" ]]; then
+    $line > /tmp/serial_read.log 2>&1
+  fi
 done < <(tail -f $SERIAL_DEVICE)
