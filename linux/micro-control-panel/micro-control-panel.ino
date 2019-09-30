@@ -10,9 +10,10 @@
 #include <switch.h>
 #include "serial_commands.h"
 
-Switch switch1(&lock_session, &unlock_session, 7, INPUT);
+//Switch switch1(&lock_session, &unlock_session, 7, INPUT);
 Button button1(&minimize_all_windows, 8, LOW, INPUT_PULLUP);
 Button button2(&activate_all_windows, 9, LOW, INPUT_PULLUP);
+Button button3(&unlock_session, 10, LOW, INPUT_PULLUP);
 
 void setup() {
   Serial.begin(9600);
@@ -21,6 +22,6 @@ void setup() {
 void loop() {
   button1.TriggerIfToggled();
   button2.TriggerIfToggled();
-  switch1.TriggerIfToggled();
+  button3.TriggerIfToggled();
   delay(100);
 }
